@@ -1,0 +1,14 @@
+# This is when Authorization headers don't get through to PHP in Wordpress
+# Copying them to another header called HTTP_X_AUTHORIZATION
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [E=HTTP_X_AUTHORIZATION:%{HTTP:Authorization},L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [E=HTTP_X_AUTHORIZATION:%{HTTP:Authorization},L]
+</IfModule>
+
+# END WordPress

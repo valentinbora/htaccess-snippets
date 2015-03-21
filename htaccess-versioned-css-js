@@ -1,0 +1,7 @@
+# This way you can reference files such as filename.1231321312.css
+#  and it will be rewritten to filename.css
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule (.+)\.(\d+)\.(js|css)$ $1.$3 [L]
+</IfModule>
